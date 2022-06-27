@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const UserSchema = new mongoose.Schema({
     displayName: {
@@ -35,6 +36,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: [true, 'Please provide password'],
         minlength: 6,
+        select: false,
         
     },
     zipCode: {
@@ -49,7 +51,11 @@ UserSchema.pre('save', async function () {
 })
 
 UserSchema.methods.createJWT = function () {
-    console.log(this)
+    return jwt.sign({ userId: this._id }, process.env.JSON_TOKEN, { expiresIn: '1d' });
+}
+UserSchema.methods.comparePassword = async function (userPassword) {
+    const isMatch = await bcrypt.compare(userPassword, this.password);
+    return isMatch;
 }
 
 export default mongoose.model('User', UserSchema);

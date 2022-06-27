@@ -12,10 +12,12 @@ import projectsRouter from './routes/projectsRoutes.js'
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Welcome')
+app.get('/api/v1', (req, res) => {
+    console.log('someone connected')
+    res.json({ msg: 'Hello dick' });
 });
 
 app.use('/api/v1/auth', authRouter);
