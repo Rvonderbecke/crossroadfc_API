@@ -1,27 +1,31 @@
 const createProject = async (req, res) => {
-    res.send('create Project');
-}
+	res.send('create Project');
+};
 const updateProject = async (req, res) => {
-    res.send('updateProject');
-}
+	res.send('updateProject');
+};
 const deleteProject = async (req, res) => {
-    res.send('deleteProject');
-}
+	res.send('deleteProject');
+};
 const joinProject = async (req, res) => {
-    res.send('joinProject');
-}
+	res.send('joinProject');
+};
 const donateToProject = async (req, res) => {
-    res.send('donateToProject');
-}
+	res.send('donateToProject');
+};
 const viewProject = async (req, res) => {
-    res.send('viewProject');
-}
+	res.send('viewProject');
+};
 const allProjects = async (req, res) => {
-    res.send('viewProject');
-}
+	res.send('viewProject');
+};
 
-
-
-
-
-export {allProjects, createProject, updateProject, deleteProject, joinProject, donateToProject, viewProject}
+export {
+	allProjects,
+	createProject,
+	updateProject,
+	deleteProject,
+	joinProject,
+	donateToProject,
+	viewProject,
+};

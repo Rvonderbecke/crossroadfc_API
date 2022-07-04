@@ -8,10 +8,11 @@ import connectDB from './db/connect.js';
 //routers
 import authRouter from './routes/authRoutes.js'
 import projectsRouter from './routes/projectsRoutes.js'
+import taekwondoRouter from './routes/taekwondoRoutes.js'
 //middleware
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js';
-
+import authenticateUser from './middleware/auth.js'
 
 app.use(express.json());
 
@@ -21,7 +22,8 @@ app.get('/api/v1', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/projects', projectsRouter);
+app.use('/api/v1/projects', authenticateUser, projectsRouter);
+app.use('/api/v1/taekwondo', authenticateUser, taekwondoRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
