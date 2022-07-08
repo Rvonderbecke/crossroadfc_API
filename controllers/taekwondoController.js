@@ -1,4 +1,9 @@
+import User from "../models/User.js";
+import { StatusCodes } from 'http-status-codes';
+
+
 const createTaekwondoStudentProfile = async (req, res) => {
+	
 	res.json({msg: 'You have connected to make user route'})
 };
 const updateTaekwondoStudentProfile = async (req, res) => {
@@ -8,7 +13,10 @@ const deleteTaekwondoStudentProfile = async (req, res) => {
 	res.send('delete taekwondo student profile');
 };
 const viewTaekwondoStudentProfile = async (req, res) => {
-	res.send('Student PRofile');
+	const { userId } = req.body;
+	const data = await User.findOne(userId)
+	console.log()
+	res.json(data);
 };
 
 export {
