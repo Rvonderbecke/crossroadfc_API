@@ -8,6 +8,7 @@ import connectDB from './db/connect.js';
 //routers
 import authRouter from './routes/authRoutes.js'
 import taekwondoRouter from './routes/taekwondoRoutes.js'
+import adminRouter from './routes/adminRoutes.js'
 //middleware
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -22,6 +23,7 @@ app.get('/api/v1', (req, res) => {
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/taekwondo',taekwondoRouter);
+app.use('/api/v1/admin', adminRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

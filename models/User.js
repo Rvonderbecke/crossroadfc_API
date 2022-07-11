@@ -43,6 +43,10 @@ const UserSchema = new mongoose.Schema(
 			trim: true,
 			required: [true, 'Please provide home zip code'],
 		},
+		admin: {
+			type: Boolean,
+			default: false,
+		},
 		taekwondo: {
 			title: {
 				type: String,
@@ -84,7 +88,7 @@ const UserSchema = new mongoose.Schema(
 			},
 			bidPointTotal: {
 				type: Number,
-				default: 0,
+				default: 100,
 			},
 			projectsOwned: Array,
 			projectsWatching: Array,
@@ -105,7 +109,7 @@ const UserSchema = new mongoose.Schema(
 			startDate: Date,
 			rewardPointsTotal: {
 				type: Number,
-				default: 0
+				default: 100
 			},
 			rewardHistory: Array,
 			involvedProjects: Array,

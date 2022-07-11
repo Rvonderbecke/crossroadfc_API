@@ -14,8 +14,12 @@ const deleteTaekwondoStudentProfile = async (req, res) => {
 };
 const viewTaekwondoStudentProfile = async (req, res) => {
 	const { userId } = req.body;
+	//Model.findOne(query, option)
+	const options = {
+		sort: {previousTestScores: -1},
+		projection: {}
+	}
 	const data = await User.findOne(userId)
-	console.log()
 	res.json(data);
 };
 
@@ -24,4 +28,5 @@ export {
 	updateTaekwondoStudentProfile,
 	deleteTaekwondoStudentProfile,
 	viewTaekwondoStudentProfile,
+	
 };

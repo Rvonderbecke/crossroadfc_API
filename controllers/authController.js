@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestError, UnAuthenticatedError } from '../errors/index.js';
 
 const register = async (req, res) => {
-	const { lName, fName, password, email, zipCode } = req.body;
+	const { lName, fName, password, email, zipCode, admin } = req.body;
 	const foundEmail = await User.findOne({ email });
 	if (!lName || !fName || !password || !email || !zipCode) {
 		throw new BadRequestError('please provide all values');
@@ -14,7 +14,7 @@ const register = async (req, res) => {
 	const user = await User.create(req.body);
 	const token = user.createJWT();
 	res.status(StatusCodes.OK).json({
-		user: { email: user.email, fName: user.fName, zipCode: user.zipCode, userId: user._id, fullName: user.fullName },
+		user: { email: user.email, fName: user.fName, zipCode: user.zipCode, userId: user._id, fullName: user.fullName, admin: user.admin },
 		token,
 		zipCode: user.zipCode,
 		
