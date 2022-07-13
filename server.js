@@ -1,7 +1,6 @@
 import express from 'express'
 import 'dotenv/config';
 import 'express-async-errors';
-import 'cors';
 const app = express();
 
 import connectDB from './db/connect.js';
@@ -16,7 +15,7 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 import authenticateUser from './middleware/auth.js'
 
 app.use(express.json());
-app.use(cors());
+
 app.get('/api/v1', (req, res) => {
     console.log('someone connected')
     res.json({ msg: 'Hello dear' });
